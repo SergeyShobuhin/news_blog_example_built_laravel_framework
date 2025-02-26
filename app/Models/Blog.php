@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Blog extends Model
 {
     use SoftDeletes;
+    use HasFactory;
 
     protected $table = 'blogs'; // не обязательно, но требуют правила
     protected $guarded = [];
