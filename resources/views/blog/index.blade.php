@@ -28,7 +28,7 @@
                     </td>
                     <td>@if($blog->tags->isNotEmpty())
                             @foreach($blog->tags as $tag)
-                                {{ $tag->title }}
+                                -{{ $tag->title }}-
                             @endforeach
                         @else
                             Нет тегов
@@ -40,8 +40,9 @@
             @endforeach
             </tbody>
         </table>
+        <div class="mb-3">{{ $blogs->onEachSide(5)->links() }}</div>
     </div>
-    <a class="btn btn-primary" href="{{ route('blog.create') }}">Создать статью</a>
+    <a class="btn btn-primary mb-3" href="{{ route('blog.create') }}">Создать статью</a>
 
 
 
