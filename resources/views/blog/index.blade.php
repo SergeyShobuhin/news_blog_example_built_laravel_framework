@@ -40,10 +40,19 @@
             @endforeach
             </tbody>
         </table>
-        <div class="mb-3">{{ $blogs->onEachSide(5)->links() }}</div>
+        <div class="mb-3">{{ $blogs->withQueryString()->onEachSide(5)->links() }}</div>
     </div>
     <a class="btn btn-primary mb-3" href="{{ route('blog.create') }}">Создать статью</a>
 
+    <form class="d-flex" action="{{ route('blog.index') }}" method="get"> Пробуем поиск
+        <input name="title" class="form-control me-2" type="search" placeholder="Поиск по заголовку" aria-label="Search"
+               value="{{ request('title') }}">
+        <input name="content" class="form-control me-2" type="search" placeholder="Поиск по содержанию"
+               aria-label="Search" value="{{ request('content') }}">
+        <input name="category" class="form-control me-2" type="search" placeholder="Поиск по категории"
+               aria-label="Search" value="{{ request('category') }}">
 
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
 
 @endsection

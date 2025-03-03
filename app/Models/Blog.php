@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,6 +11,7 @@ class Blog extends Model
 {
     use SoftDeletes;
     use HasFactory;
+    use Filterable;
 
     protected $table = 'blogs'; // не обязательно, но требуют правила
     protected $guarded = [];
