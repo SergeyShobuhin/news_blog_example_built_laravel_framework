@@ -19,7 +19,19 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/mail', [\App\Http\Controllers\MailController::class, 'index'])->name('mail.index');
+Route::middleware(['auth', 'admin'])->group(function () {
+    // Маршруты, требующие аутентификации и middleware 'admin'
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    });
+//
+//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+//    Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
+});
+
+Route::get('/main', [\App\Http\Controllers\MainController::class, 'index'])->name('main.index');
 Route::get('/about', [\App\Http\Controllers\AboutController::class, 'index'])->name('about.index');
 Route::get('/contacts', [\App\Http\Controllers\ContactController::class, 'index'])->name('contact.index');
 
