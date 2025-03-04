@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Blog\StoreController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,12 +24,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     // Маршруты, требующие аутентификации и middleware 'admin'
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
-    });
-//
-//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-//    Route::post('/logout', [ProfileController::class, 'logout'])->name('logout');
+    })->name('admin.dashboard');
+
+    Route::get('/admin/', [\App\Http\Controllers\Admin\MyController::class, 'index'])->name('my.index');
 });
 
 Route::get('/main', [\App\Http\Controllers\MainController::class, 'index'])->name('main.index');

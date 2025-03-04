@@ -16,6 +16,12 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => AdminPanelMiddleware::class,
         ]);
+        $middleware->validateCsrfTokens(except: [
+            'blogs/*',
+            'blogs',
+//            'http://example.com/foo/bar',
+//            'http://example.com/foo/*',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

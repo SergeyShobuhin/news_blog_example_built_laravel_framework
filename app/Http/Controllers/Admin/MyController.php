@@ -8,6 +8,7 @@ class MyController extends Controller
 {
     public function index()
     {
+//        dd('asdsadsa');
         return view('admin.index');
     }
 }

@@ -2,8 +2,10 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" href="{{ route('dashboard') }}">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -20,7 +22,32 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('about.index') }}">Информация</a>
                         </li>
+                        @if(auth()->check())
+{{--                        ПЕРВЫЙ ВАРИАНТ АДМИН ДОСТУПА--}}
+                        @can ('view', auth()->user())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('my.index') }}">Админ панель</a>
+                            </li>
+                        @endcan
+{{--                        ВТОРОЙ ВАРИАНТ АДМИН ДОСТУПА--}}
+                        @can('admin-dashboard')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin.dashboard</a>
+                            </li>
+                        @endcan
                     </ul>
+                    <div>
+                        <button type="button" class="btn btn-primary">{{ Auth::getUser()->email }}<span
+                                class="badge bg-secondary">{{ Auth::getUser()->role  }}</span>
+                        </button>
+
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Выйти</button>
+                        </form>
+                    @endif
+
+                    </div>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
