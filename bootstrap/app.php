@@ -17,8 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => AdminPanelMiddleware::class,
         ]);
         $middleware->validateCsrfTokens(except: [
-            'blogs/*',
-            'blogs',
+            'api/blogs/*',
+            'api/blogs',
 //            'http://example.com/foo/bar',
 //            'http://example.com/foo/*',
         ]);

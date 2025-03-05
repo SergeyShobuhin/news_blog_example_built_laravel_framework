@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Blog;
+namespace App\Http\Controllers\Api\Blog;
 
+use App\Http\Controllers\Blog\BaseController;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Blog\UpdateRequest;
+use App\Http\Resources\Blog\BlogResource;
 use App\Models\Blog;
 
 class UpdateController extends BaseController
@@ -10,8 +13,9 @@ class UpdateController extends BaseController
     public function __invoke(UpdateRequest $request, Blog $blog)
     {
         $data = $request->validated();
+
         $blog = $this->service->update($blog, $data);
 
-        return redirect()->route('blog.show', $blog->id);
+        return new BlogResource($blog);
     }
 }
