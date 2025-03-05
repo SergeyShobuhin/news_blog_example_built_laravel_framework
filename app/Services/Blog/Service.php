@@ -15,6 +15,7 @@ class Service
         $blog = Blog::create($data);
         $blog->tags()->attach($tags);
 
+        return $blog;
     }
 
     public function update($blog, $data)
@@ -24,6 +25,7 @@ class Service
 
         $blog->update($data);
         $blog->tags()->sync($tags);
+        return $blog->fresh();
     }
 
     public function filterCategory($data)

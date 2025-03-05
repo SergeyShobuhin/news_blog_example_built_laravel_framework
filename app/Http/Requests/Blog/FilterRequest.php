@@ -27,9 +27,10 @@ class FilterRequest extends FormRequest
             'content' => 'nullable|string',
             'category' => 'nullable|string',
             'category_id' => 'nullable|exists:categories,id',
-
 //            'tags' => 'required|array|min:1',   с этим не работает поиск(filter)
             'tags' => '',
+            'page' => '',
+            'per_page' => '',
         ];
     }
 }
