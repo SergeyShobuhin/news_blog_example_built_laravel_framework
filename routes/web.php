@@ -46,9 +46,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Blog'], function () {
 
 //Route::resource('api.blogs', \App\Http\Controllers\Api\Blog\IndexController::class);
 
-Route::group(['namespace' => '\App\Http\Controllers\Api\Blog'], function () {
-    Route::get('/api/blogs', App\Http\Controllers\Api\Blog\IndexController::class)->name('api.blogs.index');
-    Route::post('/api/blogs', App\Http\Controllers\Api\Blog\StoreController::class)->name('api.blogs.store');
-    Route::patch('/api/blogs/{blog}', App\Http\Controllers\Api\Blog\UpdateController::class)->name('api.blogs.update');
-    Route::delete('/api/blogs/{blog}', App\Http\Controllers\Api\Blog\DeleteController::class)->name('api.blogs.delete');
-});
+//Route::group(['namespace' => '\App\Http\Controllers\Api\Blog'], function () {
+//    Route::get('/api/blogs', App\Http\Controllers\Api\Blog\IndexController::class)->name('api.blogs.index');
+//    Route::post('/api/blogs', App\Http\Controllers\Api\Blog\StoreController::class)->name('api.blogs.store');
+//    Route::patch('/api/blogs/{blog}', App\Http\Controllers\Api\Blog\UpdateController::class)->name('api.blogs.update');
+//    Route::delete('/api/blogs/{blog}', App\Http\Controllers\Api\Blog\DeleteController::class)->name('api.blogs.delete');
+//});
